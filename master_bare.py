@@ -217,7 +217,6 @@ cv2.imshow("Circle",circle)
 circle2 = np.zeros(camera.resolution, dtype="uint8")
  #x,y coordinates 0,0 i venstre top
 cv2.circle(circle2, Csys,478,255,-1)
-cv2.imshow("Circle2",circle2)
 #circel2Neg=cv2.bitwise_not(circle2)
 cv2.imshow("Circle",circle2)
 
