@@ -181,7 +181,7 @@ cv2.namedWindow("Trackbars")
 
 #Trackbars always start from 0, first value is default value
 cv2.createTrackbar("B2", "Trackbars", 185, 255, nothing) #threshold for the outline of the pack
-cv2.createTrackbar("Gain", "Trackbars", 0, 150, nothing)
+cv2.createTrackbar("Gain", "Trackbars", 70, 150, nothing) #
 cv2.createTrackbar("B", "Trackbars", 215, 255, nothing) #threshold for pellet center
 cv2.createTrackbar("W", "Trackbars", 255, 255, nothing) #threshold for no pellet
 cv2.createTrackbar("Circle_X", "Trackbars", 480, 960, nothing)
@@ -194,6 +194,8 @@ camera.resolution = (960, 960)
 camera.framerate = 30
 camera.brightness = 47 #48 til clen mask5
 camera.contrast = 0 #1 giver bedst detection
+camera.shutter_speed = camera.exposure_speed
+camera.exposure_mode = 'off'
 #camera.image_effect='blur'
 #camera.IMAGE_EFFECTS
 camera.exposure_mode = 'backlight'
