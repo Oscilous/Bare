@@ -200,7 +200,7 @@ camera.exposure_mode = 'off'
 #camera.IMAGE_EFFECTS
 camera.exposure_mode = 'backlight'
 #camera.EXPOSURE_MODES
-camera.awb_mode = 'fluorescent'
+camera.awb_mode = 'off'
 maskGain = 0.7 #er alt hvidt = lavt gain, intet hvidt = for højt gain
 
 Csys = (480, 468)
