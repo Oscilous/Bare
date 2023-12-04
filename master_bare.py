@@ -181,7 +181,7 @@ cv2.namedWindow("Trackbars")
  
 cv2.createTrackbar("B2", "Trackbars", 0, 255, nothing)
 cv2.createTrackbar("Gain", "Trackbars", 0, 150, nothing)
-cv2.createTrackbar("Rad", "Trackbars", 300, 500, nothing)
+cv2.createTrackbar("B", "Trackbars", 0, 255, nothing)
 cv2.createTrackbar("W", "Trackbars", 0, 255, nothing)
 W = cv2.getTrackbarPos("W", "Trackbars")
 
@@ -226,6 +226,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     #Threshold values
     B = 215 #threshold for pellet center
+    B = cv2.getTrackbarPos("B", "Trackbars") #threshold for pellet center
+
     W = 255
     W2 =250 #threshold for no pellet
     B2 =185 #threshold for the outline of the pack
