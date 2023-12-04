@@ -182,8 +182,8 @@ cv2.namedWindow("Trackbars")
 #Trackbars always start from 0, first value is default value
 cv2.createTrackbar("B2", "Trackbars", 185, 255, nothing) #threshold for the outline of the pack
 cv2.createTrackbar("Gain", "Trackbars", 0, 150, nothing)
-cv2.createTrackbar("B", "Trackbars", 215, 255, nothing)
-cv2.createTrackbar("W", "Trackbars", 255, 255, nothing)
+cv2.createTrackbar("B", "Trackbars", 215, 255, nothing) #threshold for pellet center
+cv2.createTrackbar("W", "Trackbars", 255, 255, nothing) #threshold for no pellet
 cv2.createTrackbar("Circle_X", "Trackbars", 480, 960, nothing)
 cv2.createTrackbar("Circle_Y", "Trackbars", 468, 960, nothing)
 cv2.createTrackbar("Circle_Diameter", "Trackbars", 401, 500, nothing)
@@ -229,17 +229,15 @@ botArray[1] = 100
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     image = frame.array #rå pixel array
 
-    #Threshold values
-    B = 215 #threshold for pellet center
+    #Fetching values from sliders
+    Dia = cv2.getTrackbarPos("Circle_Diameter", "Trackbars")
+    Csys = (cv2.getTrackbarPos("Circle_X", "Trackbars"),cv2.getTrackbarPos("Circle_Y", "Trackbars"))
     B = cv2.getTrackbarPos("B", "Trackbars") #threshold for pellet center
-
-    W = 255
-    W2 =250 #threshold for no pellet
-
     B2 = cv2.getTrackbarPos("B2", "Trackbars") # Adjustable threshold
     maskGain = (cv2.getTrackbarPos("Gain", "Trackbars")/100)
     W2 = cv2.getTrackbarPos("W", "Trackbars")
-
+    W = 255
+    
     gray1 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #converts pixel array to grayscale from HSV
     grayINV = cv2.bitwise_not(gray1)
     maskINV  = cv2.bitwise_not(maskC)
@@ -268,8 +266,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     #masked_data32 = cv2.bitwise_and(circle,OTSUImg2)
 
     #cv2.circle(image, center_coordinates, radius, color, thickness)
-    Dia = cv2.getTrackbarPos("Circle_Diameter", "Trackbars")
-    Csys = (cv2.getTrackbarPos("Circle_X", "Trackbars"),cv2.getTrackbarPos("Circle_Y", "Trackbars"))
     image_area=cv2.circle(image, Csys,Dia,(0,67,180),1) #draws a circle on the original image to show the searched area
 
 
