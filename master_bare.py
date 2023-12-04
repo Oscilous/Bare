@@ -236,7 +236,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     maskGain = (cv2.getTrackbarPos("Gain", "Trackbars")/100)
     W2 = cv2.getTrackbarPos("W", "Trackbars")
     W = 255
-
+    
+    cv2.circle(circle, Csys,Dia,255,-1)
+    cv2.imshow("Circle",circle)
     gray1 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #converts pixel array to grayscale from HSV
     grayINV = cv2.bitwise_not(gray1)
     maskINV  = cv2.bitwise_not(maskC)
