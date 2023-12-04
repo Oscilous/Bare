@@ -183,6 +183,9 @@ cv2.createTrackbar("B2", "Trackbars", 0, 255, nothing)
 cv2.createTrackbar("Gain", "Trackbars", 0, 150, nothing)
 cv2.createTrackbar("B", "Trackbars", 0, 255, nothing)
 cv2.createTrackbar("W", "Trackbars", 0, 255, nothing)
+cv2.createTrackbar("Circle_X", "Trackbars", 0, 960, nothing)
+cv2.createTrackbar("Circle_Y", "Trackbars", 0, 960, nothing)
+cv2.createTrackbar("Circle_Diameter", "Trackbars", 0, 500, nothing)
 W = cv2.getTrackbarPos("W", "Trackbars")
 
 camera = PiCamera()
@@ -262,8 +265,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     masked_data3 = cv2.bitwise_and(circle,OTSUImg)
     #masked_data32 = cv2.bitwise_and(circle,OTSUImg2)
 
-
-    image_area=cv2.circle(image, Csys,Dia,(0,67,180),1) #tegner en cyrcel på det originale billede for at vise det søgte område
+    #cv2.circle(image, center_coordinates, radius, color, thickness)
+    Dia = cv2.getTrackbarPos("Circle_Diameter", "Trackbars")
+    Csys = (cv2.getTrackbarPos("Circle_X", "Trackbars"),cv2.getTrackbarPos("Circle_Y", "Trackbars"))
+    image_area=cv2.circle(image, Csys,Dia,(0,67,180),1) #draws a circle on the original image to show the searched area
 
 
     overlay = cv2.addWeighted(gray1,0.5, (masked_data3+outlineT), 0.7,0)
