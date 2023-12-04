@@ -211,7 +211,7 @@ maskC = cv2.resize(maskB,camera.resolution)
 
 circle = np.zeros(camera.resolution, dtype="uint8")
 cv2.circle(circle, Csys,Dia,255,-1)
-#cv2.imshow("Circle",circle)
+cv2.imshow("Circle",circle)
 
 circle2 = np.zeros(camera.resolution, dtype="uint8")
  #x,y coordinates 0,0 i venstre top
@@ -219,7 +219,7 @@ cv2.circle(circle2, Csys,478,255,35)
 cv2.rectangle(circle2,(960,0),(10,40),(0,0,255),-1)
 
 #circel2Neg=cv2.bitwise_not(circle2)
-#cv2.imshow("Circle",circle2)
+cv2.imshow("Circle",circle2)
 
 arraySize =8
 botArray = np.zeros((arraySize,),dtype=float)
@@ -311,7 +311,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     #print(Otsu)
     #print(arrayDiff)
     #print("--------------")
-    meanPix(arrayAvgbot,arrayDiff,W_en,Otsu,peripheral) #servo og pass fail function
+    #meanPix(arrayAvgbot,arrayDiff,W_en,Otsu,peripheral) #servo og pass fail function
     Overlay_area_rgb=cv2.cvtColor(Overlay_area,cv2.COLOR_GRAY2BGR)
     #Overlay_area_rgb2=cv2.cvtColor(Overlay_area2,cv2.COLOR_GRAY2BGR)
     vis =np.concatenate((Overlay_area_rgb,image_area),axis=1)
