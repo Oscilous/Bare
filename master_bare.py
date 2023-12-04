@@ -178,14 +178,15 @@ def nothing(x):
     pass
  
 cv2.namedWindow("Trackbars")
- 
-cv2.createTrackbar("B2", "Trackbars", 0, 255, nothing)
+
+#Trackbars always start from 0, first value is default value
+cv2.createTrackbar("B2", "Trackbars", 185, 255, nothing) #threshold for the outline of the pack
 cv2.createTrackbar("Gain", "Trackbars", 0, 150, nothing)
-cv2.createTrackbar("B", "Trackbars", 0, 255, nothing)
-cv2.createTrackbar("W", "Trackbars", 0, 255, nothing)
-cv2.createTrackbar("Circle_X", "Trackbars", 0, 960, nothing)
-cv2.createTrackbar("Circle_Y", "Trackbars", 0, 960, nothing)
-cv2.createTrackbar("Circle_Diameter", "Trackbars", 0, 500, nothing)
+cv2.createTrackbar("B", "Trackbars", 215, 255, nothing)
+cv2.createTrackbar("W", "Trackbars", 255, 255, nothing)
+cv2.createTrackbar("Circle_X", "Trackbars", 480, 960, nothing)
+cv2.createTrackbar("Circle_Y", "Trackbars", 468, 960, nothing)
+cv2.createTrackbar("Circle_Diameter", "Trackbars", 401, 500, nothing)
 W = cv2.getTrackbarPos("W", "Trackbars")
 
 camera = PiCamera()
@@ -206,8 +207,6 @@ maskB = cv2.imread('mask clean11.jpg' , cv2.IMREAD_GRAYSCALE)
 maskC = cv2.resize(maskB,camera.resolution)
 
 circle = np.zeros(camera.resolution, dtype="uint8")
-Csys=(480,468) #x,y coordinates 0,0 i venstre top
-Dia=(401)
 cv2.circle(circle, Csys,Dia,255,-1)
 #cv2.imshow("Circle",circle)
 
@@ -233,7 +232,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     W = 255
     W2 =250 #threshold for no pellet
-    B2 =185 #threshold for the outline of the pack
+
     B2 = cv2.getTrackbarPos("B2", "Trackbars") # Adjustable threshold
     maskGain = (cv2.getTrackbarPos("Gain", "Trackbars")/100)
     W2 = cv2.getTrackbarPos("W", "Trackbars")
