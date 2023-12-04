@@ -177,13 +177,13 @@ def meanPix(arrayAvg, diff,W_enable,otsu,peripheral):
 def nothing(x):
     pass
  
-#cv2.namedWindow("Trackbars")
+cv2.namedWindow("Trackbars")
  
-#cv2.createTrackbar("B2", "Trackbars", 0, 255, nothing)
+cv2.createTrackbar("B2", "Trackbars", 0, 255, nothing)
 cv2.createTrackbar("Gain", "Trackbars", 0, 150, nothing)
-#cv2.createTrackbar("Rad", "Trackbars", 300, 500, nothing)
-#cv2.createTrackbar("W", "Trackbars", 0, 255, nothing)
-#W = cv2.getTrackbarPos("W", "Trackbars")
+cv2.createTrackbar("Rad", "Trackbars", 300, 500, nothing)
+cv2.createTrackbar("W", "Trackbars", 0, 255, nothing)
+W = cv2.getTrackbarPos("W", "Trackbars")
 
 camera = PiCamera()
 camera.resolution = (960, 960)
