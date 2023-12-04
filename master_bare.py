@@ -311,7 +311,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     #print(Otsu)
     #print(arrayDiff)
     #print("--------------")
-    meanPix(arrayAvgbot,arrayDiff,W_en,Otsu,peripheral) #servo og pass fail function
+    #meanPix(arrayAvgbot,arrayDiff,W_en,Otsu,peripheral) #servo og pass fail function
     Overlay_area_rgb=cv2.cvtColor(Overlay_area,cv2.COLOR_GRAY2BGR)
     #Overlay_area_rgb2=cv2.cvtColor(Overlay_area2,cv2.COLOR_GRAY2BGR)
     vis =np.concatenate((Overlay_area_rgb,image_area),axis=1)
