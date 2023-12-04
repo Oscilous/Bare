@@ -216,10 +216,8 @@ cv2.imshow("Circle",circle)
 #We make a black canvas the size of camera feed
 circle2 = np.zeros(camera.resolution, dtype="uint8")
  #x,y coordinates 0,0 i venstre top
-cv2.circle(circle2, Csys,478,255,35)
+cv2.circle(circle2, Csys,478,255,-1)
 cv2.imshow("Circle2",circle2)
-cv2.rectangle(circle2,(960,0),(10,40),(0,0,255),-1)
-
 #circel2Neg=cv2.bitwise_not(circle2)
 cv2.imshow("Circle",circle2)
 
