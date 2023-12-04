@@ -193,9 +193,8 @@ camera = PiCamera()
 camera.resolution = (960, 960)
 camera.framerate = 30
 camera.brightness = 47 #48 til clen mask5
-camera.contrast = 0 #1 giver bedst detection
-camera.shutter_speed = camera.exposure_speed
-print(camera.exposure_speed)
+camera.contrast = 1 #1 giver bedst detection
+camera.shutter_speed = 10000
 camera.exposure_mode = 'off'
 #camera.image_effect='blur'
 #camera.IMAGE_EFFECTS
