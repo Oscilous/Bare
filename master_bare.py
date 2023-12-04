@@ -7,7 +7,7 @@ import sys
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
-#GPIO.cleanup()
+GPIO.cleanup()
 GPIO.setwarnings(False)
 servo_pin = 13
 led_pin = 21
@@ -24,6 +24,7 @@ pwm.ChangeDutyCycle(0)
 counter=0
 ticker=0
 arrayNr = 1
+GPIO.setup(led_pin, GPIO.OUT)
 GPIO.output(led_pin, 1)
 startTime = time.time()
 failCounter=0
