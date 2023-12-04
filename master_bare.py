@@ -201,6 +201,9 @@ camera.exposure_mode = 'backlight'
 camera.awb_mode = 'fluorescent'
 maskGain = 0.7 #er alt hvidt = lavt gain, intet hvidt = for højt gain
 
+Csys = (480, 468)
+Dia = (401)
+
 rawCapture = PiRGBArray(camera, size=camera.resolution)
 
 maskB = cv2.imread('mask clean11.jpg' , cv2.IMREAD_GRAYSCALE)
