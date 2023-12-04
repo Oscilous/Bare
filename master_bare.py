@@ -213,9 +213,11 @@ circle = np.zeros(camera.resolution, dtype="uint8")
 cv2.circle(circle, Csys,Dia,255,-1)
 cv2.imshow("Circle",circle)
 
+#We make a black canvas the size of camera feed
 circle2 = np.zeros(camera.resolution, dtype="uint8")
  #x,y coordinates 0,0 i venstre top
 cv2.circle(circle2, Csys,478,255,35)
+cv2.imshow("Circle2",circle2)
 cv2.rectangle(circle2,(960,0),(10,40),(0,0,255),-1)
 
 #circel2Neg=cv2.bitwise_not(circle2)
@@ -237,7 +239,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     maskGain = (cv2.getTrackbarPos("Gain", "Trackbars")/100)
     W2 = cv2.getTrackbarPos("W", "Trackbars")
     W = 255
-    
+
     gray1 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #converts pixel array to grayscale from HSV
     grayINV = cv2.bitwise_not(gray1)
     maskINV  = cv2.bitwise_not(maskC)
