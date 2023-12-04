@@ -209,10 +209,6 @@ rawCapture = PiRGBArray(camera, size=camera.resolution)
 maskB = cv2.imread('mask clean11.jpg' , cv2.IMREAD_GRAYSCALE)
 maskC = cv2.resize(maskB,camera.resolution)
 
-circle = np.zeros(camera.resolution, dtype="uint8")
-cv2.circle(circle, Csys,Dia,255,-1)
-cv2.imshow("Circle",circle)
-
 #We make a black canvas the size of camera feed
 circle2 = np.zeros(camera.resolution, dtype="uint8")
  #x,y coordinates 0,0 i venstre top
@@ -236,9 +232,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     maskGain = (cv2.getTrackbarPos("Gain", "Trackbars")/100)
     W2 = cv2.getTrackbarPos("W", "Trackbars")
     W = 255
+
     
-    cv2.circle(circle, Csys,Dia,255,-1)
+    circle = np.zeros(camera.resolution, dtype="uint8")
+    circle = cv2.circle(circle, Csys,Dia,255,-1)
     cv2.imshow("Circle",circle)
+
     gray1 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #converts pixel array to grayscale from HSV
     grayINV = cv2.bitwise_not(gray1)
     maskINV  = cv2.bitwise_not(maskC)
