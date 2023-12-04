@@ -195,12 +195,13 @@ camera.framerate = 30
 camera.brightness = 47 #48 til clen mask5
 camera.contrast = 0 #1 giver bedst detection
 camera.shutter_speed = camera.exposure_speed
+print(camera.exposure_speed)
 camera.exposure_mode = 'off'
 #camera.image_effect='blur'
 #camera.IMAGE_EFFECTS
 camera.exposure_mode = 'backlight'
 #camera.EXPOSURE_MODES
-camera.awb_mode = 'off'
+camera.awb_mode = 'fluorescent'
 maskGain = 0.7 #er alt hvidt = lavt gain, intet hvidt = for højt gain
 
 Csys = (480, 468)
